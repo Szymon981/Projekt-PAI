@@ -43,8 +43,8 @@
 	// jesli nie ma wywolaj nazwe obiektu
 
 	$szablon = file_get_contents("C:\\xampp\htdocs\projekt\szablonnewsa.html");
-	require_once 'bazaplikowa.php';
-	$baza = new FileDatabase();
+	require_once 'baza.php';
+	$baza = new NormalDatabase();
 
 	
 	foreach($baza->getNews() as $elementyposta){
@@ -53,12 +53,13 @@
 			
 			
 		}
-			$zajawkatresci = substr($elementyposta[2],0,100);
-			$wygenerowanynews = str_replace('##obrazek##', $elementyposta[1], $szablon);
-			$wygenerowanynews = str_replace('##tytul##', $elementyposta[0], $wygenerowanynews);
-			$wygenerowanynews = str_replace('##tresc##', $zajawkatresci, $wygenerowanynews);
+			$zajawkatresci = substr($elementyposta[4],0,100);
+			$wygenerowanynews = str_replace('##idnewsa##', $elementyposta[0], $szablon);
+			$wygenerowanynews = str_replace('##tytul##', $elementyposta[1], $wygenerowanynews);
+			$wygenerowanynews = str_replace('##obrazek##', $elementyposta[2], $wygenerowanynews);
 			$wygenerowanynews = str_replace('##autor##', $elementyposta[3], $wygenerowanynews);
-			$wygenerowanynews = str_replace('##idnewsa##', $elementyposta[4], $wygenerowanynews);
+			$wygenerowanynews = str_replace('##tresc##', $zajawkatresci, $wygenerowanynews);
+			
 			echo $wygenerowanynews;
 			//echo "<div class='news'><img src='$elementyposta[1]'>";
 			//echo "<div class='newsbody'><h1>$elementyposta[0]</h1>";
