@@ -17,8 +17,8 @@ require_once 'menu.php';
 
 if (isset($_POST['tytul']))
 {	
-	require_once 'bazaplikowa.php';
-	$baza = new FileDatabase();
+	require_once 'baza.php';
+	$baza = new NormalDatabase();
 	$baza->addNews($_POST);
 echo "<div class='success'>Został dodany news</div>";
 }

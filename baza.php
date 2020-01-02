@@ -14,7 +14,11 @@ class NormalDatabase implements DatabaseFacade{
 }
 	
 	
-	public function addNews($dane){}
+	public function addNews($dane){
+		$connection = mysqli_connect("localhost", "root", "", "test");
+	$query = $connection->query("insert into newsy(tytul, obrazek, autor, tresc) values('" . $dane['tytul'] . "', '".$dane['obrazek']. "', '".$dane['autor']."', '".$dane['tresc']."')");
+	
+	}
 	
 	public function getNewsById($id){}
 	
