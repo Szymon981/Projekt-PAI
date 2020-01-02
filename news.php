@@ -30,7 +30,7 @@ if (isset($_GET['id']))
 <?php
 echo $post[0];
 echo '<br>';
-echo $post[1];
+echo "<img src = '$post[1]'>";
 echo '<br>';
 echo $post[2];
 echo '<br>';
@@ -41,7 +41,9 @@ echo '<br>';
 </p>
 
 <!-- II sposob-->
-<?php/*
-echo '<p>' . $post[2] . '</p>';
+<?php
+/*
+
+echo "<img src = '$post[1]'>";
+echo '<img src = "'.$post[1]."\">";*/
 ?>
-*/
