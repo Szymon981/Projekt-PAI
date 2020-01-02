@@ -28,11 +28,20 @@ if (isset($_GET['id']))
 <!-- I sposob-->
 <p>
 <?php
+echo $post[0];
+echo '<br>';
+echo $post[1];
+echo '<br>';
 echo $post[2];
+echo '<br>';
+echo $post[3];
+echo '<br>';
+
 ?>
 </p>
 
 <!-- II sposob-->
-<?php
+<?php/*
 echo '<p>' . $post[2] . '</p>';
 ?>
+*/
