@@ -13,14 +13,23 @@ class NormalDatabase implements DatabaseFacade{
 	return $result;
 }
 	
+	public function getNewsById($id){
+		$connection = mysqli_connect("localhost", "root", "", "test");
+	$query = $connection->query("select * from newsy where id=$id");
+	
+	while ($row = $query->fetch_array(MYSQLI_NUM)){
+		return $row;
+	}
+		throw new Exception("Nie znaleziono newsa");
+	}
 	
 	public function addNews($dane){
 		$connection = mysqli_connect("localhost", "root", "", "test");
 	$query = $connection->query("insert into newsy(tytul, obrazek, autor, tresc) values('" . $dane['tytul'] . "', '".$dane['obrazek']. "', '".$dane['autor']."', '".$dane['tresc']."')");
-	
+	return $query;
 	}
 	
-	public function getNewsById($id){}
+	
 	
 }
 

@@ -8,4 +8,5 @@
 	<img class='logo' src = "">
 	<a href="/projekt/dodajnewsa.php">Dodaj newsa</a>
 	<a href="/projekt/newsy.php">Strona glowna</a>
+	<a href="/projekt/logowanie.php">Logowanie</a>
 </div>
