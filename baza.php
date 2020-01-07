@@ -24,7 +24,10 @@ class NormalDatabase implements DatabaseFacade{
 	}
 	
 	public function addNews($dane){
-		$connection = mysqli_connect("localhost", "root", "", "test");
+		if(empty($dane['tytul']) || empty($dane['obrazek']) || empty($dane['autor']) || empty($dane['tresc'])){
+			return false;
+		}
+	$connection = mysqli_connect("localhost", "root", "", "test");
 	$query = $connection->query("insert into newsy(tytul, obrazek, autor, tresc) values('" . $dane['tytul'] . "', '".$dane['obrazek']. "', '".$dane['autor']."', '".$dane['tresc']."')");
 	return $query;
 	}
