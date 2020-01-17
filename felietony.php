@@ -5,8 +5,8 @@
 	// jesli string to wypisz
 	// jesli nie string to wywolaj funkcje __toString()
 	// jesli nie ma wywolaj nazwe obiektu
-
-	PanelNewsow::wyswietl(1);
+        
+        PanelNewsow::wyswietl(2);
+       
 	
-
 ?>

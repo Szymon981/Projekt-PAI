@@ -13,7 +13,8 @@
 
 </style>
 <?php
-require_once 'menu.php';
+require_once 'layout.php';
+require_once 'footer.php';
 if (isset($_GET['id']))
 {	
 	require_once 'baza.php';
