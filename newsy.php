@@ -1,4 +1,5 @@
 <?php
+        $pageTitle = 'Strona główna.';
 	require_once 'layout.php';
         require_once 'footer.php';
         require_once 'PanelNewsow.php';

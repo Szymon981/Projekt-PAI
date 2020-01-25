@@ -1,6 +1,7 @@
 <?php
 $pageTitle = 'Zarejestruj się w serwisie.';
 require_once 'layout.php';
+require_once 'footer.php';
 $imie = '';
 $nazwisko = '';
 $login = '';
@@ -29,12 +30,12 @@ if (!empty($_POST)) {
 <div id="main-container">
     <form method = 'post'> 
         <div class='news'>
-            <h1>Zarejestruj się</h1>
-            Imię<input placeholder="Imie" id='imie' name='imie' type='text' value="<?php echo $imie ?>"></input><br>
-            Nazwisko<input id='nazwisko' name='nazwisko' type='text' value="<?php echo $nazwisko ?>"></input><br>
-            Login<input id='login' name='login' type='text' value="<?php echo $login ?>"></input><br>
-            Hasło<input id='haslo' name='haslo' type='password' value='<?php echo $haslo ?>'></input><br>
-            Powtórz hasło<input id='phaslo' name='phaslo' type='password' value='<?php echo $phaslo ?>'></input><br>
+            <h1 id = "h1">Zarejestruj się</h1>
+            <input placeholder="Imie" id='imie' name='imie' type='text' value="<?php echo $imie ?>" placeholder = 'Imię'></input><br>
+            <input id='nazwisko' name='nazwisko' type='text' value="<?php echo $nazwisko ?>" placeholder = 'Nazwisko'></input><br>
+            <input id='login' name='login' type='text' value="<?php echo $login ?>" placeholder = 'Login'></input><br>
+            <input id='haslo' name='haslo' type='password' value='<?php echo $haslo ?>' placeholder = 'Hasło'></input><br>
+            <input id='phaslo' name='phaslo' type='password' value='<?php echo $phaslo ?>' placeholder = 'Powtórz hasło'></input><br>
             Wybór roli<select id="wyborroli" name="wyborroli">
                 <option value=="1">Użytkownik</option>
                 <option value="2">Redaktor</option>

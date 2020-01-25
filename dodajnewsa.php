@@ -1,4 +1,5 @@
 <?php
+$pageTitle = 'Dodaj swoją treść.';
 require_once 'layout.php';
 require_once 'footer.php';
 $tytul = '';
@@ -50,10 +51,10 @@ if (!empty($_POST))
 <div id="main-container">
 <form method = 'post'> <!-- formularz pozwala wysyłac dane do serwera. Mogą byc wyslane metoda get lub post. get wysyla wszystko w adresie url i mozemy to podejrzec, a post wysyla w srodku requesta, mozemy to podejrzec narzedziami develeperskim, ale nie jest to az tak widoczne.-->
 <div class=''>
-Tytul<input id='tytul' name='tytul' type='text' value="<?php echo $tytul ?>"></input><br>
-Obrazek<input id='obrazek' name='obrazek' type='text' value='<?php echo $obrazek ?>'></input><br>
-Tresc<textarea id ='tresc' name='tresc' rows='8' cols='50' ><?php echo $tresc ?></textarea><br>
-Autor<input id='autor' name='autor' type='text' value='<?php echo $autor ?>'></input><br>
+<input id='tytul' name='tytul' type='text' value="<?php echo $tytul ?>" placeholder = 'Tytuł'></input><br>
+<input id='obrazek' name='obrazek' type='text' value='<?php echo $obrazek ?>' placeholder = 'Obrazek'></input><br>
+<textarea id ='tresc' name='tresc' rows='8' cols='50' placeholder = 'Treść'><?php echo $tresc ?></textarea><br>
+<input id='autor' name='autor' type='text' value='<?php echo $autor ?>' placeholder = 'Autor'></input><br>
  Wybór treści<select id="wybortresci" name="wybortresci">
                 <option value="1" <?php echo $typ === 1 ? "selected" : "" ?>>News</option> <!-- jesli jest rowne numerowi typu to wez ta opcje, jesli nie wez pierwsze z brzegu -->
                 <option value="2" <?php echo $typ === 2 ? "selected" : "" ?>>Felieton</option>

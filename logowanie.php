@@ -14,9 +14,9 @@ if(!empty($_POST)){
 <div id="main-container">
 	<form method = 'post'>
 
-	Login:<input id = 'login' name = 'login' type = 'text' value=''></input>
+	<input id = 'login' name = 'login' type = 'text' value='' placeholder = 'Login'></input>
 	<br>
-	Haslo:<input id = 'haslo' name = 'haslo' type = 'password' value=''></input>
+	<input id = 'haslo' name = 'haslo' type = 'password' value='' placeholder = 'Hasło'></input>
 	<input type='submit' value='Zaloguj'></input>
 	</form>
 </div>

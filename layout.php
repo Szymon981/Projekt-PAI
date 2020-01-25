@@ -7,8 +7,8 @@
 <div id="main_menu">
     <img class='logo' src = "https://cdn.shopifycloud.com/hatchful-web/assets/67cbe9b74baf7f893488c5fc426d31eb.png">
     <div id="main-menu-items">
-        <a href="/projekt/dodajnewsa.php">Dodaj newsa</a>
-        <a href="/projekt/newsy.php">Strona glowna</a>
+        <a href="/projekt/dodajnewsa.php">Dodaj treść</a>
+        <a href="/projekt/newsy.php">Strona główna</a>
         <a href="/projekt/transfery.php">Transfery</a>
         <a href="/projekt/felietony.php">Felietony</a>
         <a href="/projekt/mecze.php">Mecze</a>
@@ -27,21 +27,21 @@
     </div>
 </div>
 <style>
-    h1 {
-        color: #2699FB;
+    h1 {            <!-- kolor wszystkich h1 -->
+        color: #2699FB;         
     }
-    body{
+    body{       <!-- czcionka i margines od strony newsa -->
         margin:0px;
-        font-family: "Century Gothic", "Helvetica", sans-serif;				
+        font-family: "Century Gothic", "Helvetica";				
         <!-- pierwsza czcionka wystepuje na windowsie, druga jest podana gdyby na danym systemie nie bylo gothic, a trzecia to ogolny typ czcionki, ktory bedzie dzialal na kazdym systemie -->
 
     }
-    #main-container {
+    #main-container { 
         width:50%;
 
-        margin: 20px auto; <!-- trick do wysrodkowywania duzych elementow -->
+        margin: 20px auto; 
     }
-    #main-menu-items {
+    #main-menu-items {     
         width:auto;
         float: right;
         padding-top:10px;

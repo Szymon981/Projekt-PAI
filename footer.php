@@ -7,7 +7,7 @@ require_once "layout.php"
   left: 0;
   bottom: 0;
   width: 100%;
-  background-color: red;
+  background-color: #2699FB;
   color: white;
   text-align: center;
 }
