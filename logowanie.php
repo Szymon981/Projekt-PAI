@@ -1,7 +1,7 @@
 <?php
-require_once 'layout.php';
-require_once 'footer.php';
-require_once 'Aplikacja.php';
+require_once 'C:\\xampp\htdocs\projekt\src\views\layout.php';
+require_once 'C:\\xampp\htdocs\projekt\src\views\footer.php';
+require_once 'src\backend\Aplikacja.php';
 
 
 if(!empty($_POST)){

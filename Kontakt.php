@@ -1,7 +1,7 @@
 <?php
 $pageTitle = 'Nasze dane kontaktowe.';
-require_once "layout.php";
-require_once "footer.php";
+require_once 'C:\\xampp\htdocs\projekt\src\views\layout.php';
+require_once 'C:\\xampp\htdocs\projekt\src\views\footer.php';
 
 ?>
 

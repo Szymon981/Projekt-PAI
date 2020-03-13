@@ -1,56 +1,68 @@
 <?php
 $pageTitle = 'Najbliższe mecze.';
-require_once "layout.php";
-require_once "footer.php";
+require_once 'C:\\xampp\htdocs\projekt\src\views\layout.php';
+require_once 'C:\\xampp\htdocs\projekt\src\views\footer.php';
 
 ?>
+<?php
+class PanelMeczy {
+    
+    public static function wyswietl() {
+        $szablon = file_get_contents("C:\\xampp\\htdocs\\projekt\\src\\views\\szablonmeczu.html");
+require_once "src\backend\baza.php";
+	$baza = new NormalDatabase();
 
+	
+	foreach($baza->getMatch() as $elementyposta){
+		if(count($elementyposta) < 5){
+			continue;
+			
+			
+		}
+			
+			$wygenerowanymecz = str_replace('##id##', $elementyposta["id"], $szablon);
+			$wygenerowanymecz = str_replace('##druzyna1##', $elementyposta["druzyna1"], $wygenerowanymecz);
+			$wygenerowanymecz = str_replace('##druzyna2##', $elementyposta["druzyna2"], $wygenerowanymecz);
+			$wygenerowanymecz = str_replace('##data##', $elementyposta["data"], $wygenerowanymecz);
+			$wygenerowanymecz = str_replace('##czas##', $elementyposta["czas"], $wygenerowanymecz);
+			
+			echo $wygenerowanymecz;
+	}
+	
 
-<html>
-    <h1>26.01:</h1>
-    <br>
-    <h1>League 1:</h1>
-    <br>
-    <p>15:00 Lyon - Toulouse<p>
-    <br>
-    <p>17:00 Nantes - Bordeaux</p>
-    <br>
-    <p>21:00 Lille - PSG</p>
-    <br>
-    
-    <h1>Laliga:</h1>
-    <br>
-    <p>12:00 Atl. Madryt - Leganes<p>
-    <br>
-    <p>14:00 Celta Vigo - Eibar</p>
-    <br>
-    <p>16:00 Getafe - Betis</p>
-    <br>
-    <p>18:30 Real Sociedad - Mallorca</p>
-    <br>
-    <p>21:00 Valladolid - Real Madryt</p>
-    <br>
-    
-    <h1>Bundesliga:</h1>
-    <br>
-    <p>15:30 Bremen - Hoffenheim<p>
-    <br>
-    <p>18:00 Leverkusen - Dusseldorf</p>
-    <br>
-    
-        
-    
-    
-    
-    
-</html>
+    }
+}
+PanelMeczy::wyswietl();
+?>
 
-<style>
-    
-    h1 {            
-        color: #2699FB;   
+<script>
+var assignClickListeners = function() {
+
+        $('.starContainer').click(function () {
+            var button = $(this);
+            var id = button.data('matchId');
+            performAjaxRequest(id, button);
+        });
+
+       
     }
     
-     
-    
-</style>
+    var performAjaxRequest = function (id, button) {
+        $.ajax({
+            method: "GET",
+            url: "http://localhost/projekt/ulubioneMecze.php",
+            data: {id: id}
+        }).done(function (res) {
+//            var response = JSON.parse(res);
+//            if (response.success) {
+//                var score = response.score;
+//                $('#score' + id).text(score);
+//                button.parent().find('span.minus, span.plus').each(function(index, item){
+//                    $(item).hide();
+//                });
+//            }
+            console.log(res);
+        });
+    };
+assignClickListeners();
+</script>

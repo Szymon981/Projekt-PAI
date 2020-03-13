@@ -9,3 +9,5 @@ interface DatabaseFacade {
 	public function getNewsById($id);
 	
 }
+
+?>

@@ -1,20 +1,20 @@
 <?php
 $pageTitle = 'Dodaj swoją treść.';
-require_once 'layout.php';
-require_once 'footer.php';
+require_once 'C:\\xampp\htdocs\projekt\src\views\layout.php';
+require_once 'C:\\xampp\htdocs\projekt\src\views\footer.php';
+require_once "src\backend\Aplikacja.php";
+require_once "src\backend\baza.php";	
 $tytul = '';
 $tresc = '';
 $obrazek = '';
 $autor = '';
 $typ = 1;
-require_once "Aplikacja.php";
 	if(!(Aplikacja::isLogged())){
 		throw new Exception("Zaloguj sie aby dodawac newsy");
 	}
 	
 	if (!empty($_POST))
 {	
-	require_once 'baza.php';	//includuje baza.php
 	$baza = new NormalDatabase();
 	if($baza->addNews($_POST)) {
 		
@@ -28,26 +28,9 @@ require_once "Aplikacja.php";
 		echo "<div class='error'>Wystapil blad podczas dodawania newsa</div>";
 	}
 }
-/*
-if (!empty($_POST))
-{	
-	require_once 'baza.php';	//includuje baza.php
-	$baza = new NormalDatabase();
-	if($baza->addNews($_POST)) {
-		
-		echo "<div class='success'>Został dodany news</div>";
-	} else {
-		$tytul = $_POST['tytul'];
-		$tresc = $_POST['tresc'];
-		$autor = $_POST['autor'];
-		$obrazek = $_POST['obrazek'];
-		echo "<div class='error'>Wystapil blad podczas dodawania newsa</div>";
-	}
-}
-*/
-//if (isset($_POST['
 
 ?>
+<meta charset="utf-8">
 <div id="main-container">
 <form method = 'post'> <!-- formularz pozwala wysyłac dane do serwera. Mogą byc wyslane metoda get lub post. get wysyla wszystko w adresie url i mozemy to podejrzec, a post wysyla w srodku requesta, mozemy to podejrzec narzedziami develeperskim, ale nie jest to az tak widoczne.-->
 <div class=''>
@@ -66,4 +49,3 @@ if (!empty($_POST))
 </div>
 </form>
 </div>
- <option value=="1" >News</option>

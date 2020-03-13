@@ -15,7 +15,7 @@ class PanelNewsow {
     
     public static function wyswietl($typTresci) {
         $szablon = file_get_contents("C:\\xampp\htdocs\projekt\szablonnewsa.html");
-	require_once 'baza.php';
+require_once "src\backend\baza.php";
 	$baza = new NormalDatabase();
 
 	
@@ -30,7 +30,7 @@ class PanelNewsow {
 			$wygenerowanynews = str_replace('##tytul##', $elementyposta["tytul"], $wygenerowanynews);
 			$wygenerowanynews = str_replace('##obrazek##', $elementyposta["obrazek"], $wygenerowanynews);
 			$wygenerowanynews = str_replace('##autor##', $elementyposta["autor"], $wygenerowanynews);
-			$wygenerowanynews = str_replace('##tresc##', $zajawkatresci, $wygenerowanynews);
+			$wygenerowanynews = str_replace('##tresc##', strip_tags($zajawkatresci), $wygenerowanynews);
 			
 			echo $wygenerowanynews;
 	}

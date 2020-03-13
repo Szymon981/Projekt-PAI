@@ -1,20 +1,20 @@
 <?php
 $pageTitle = 'Zarejestruj się w serwisie.';
-require_once 'layout.php';
-require_once 'footer.php';
+require_once 'C:\\xampp\htdocs\projekt\src\views\layout.php';
+require_once 'C:\\xampp\htdocs\projekt\src\views\footer.php';
+require_once "src\backend\Aplikacja.php";
 $imie = '';
 $nazwisko = '';
 $login = '';
 $haslo = '';
 $phaslo = '';
-require_once "Aplikacja.php";
 
 if (!empty($_POST)) {
-    require_once 'baza.php'; //includuje baza.php
+    require_once "src\backend\baza.php";
     $baza = new NormalDatabase();
     try {
         $baza->addUser($_POST);
-        echo "<div class='success'>Udana rejestracja</div>";
+//        echo "<div class='success'>Udana rejestracja</div>";
     } catch (Exception $e) {
 
         $imie = $_POST['imie'];
@@ -36,7 +36,7 @@ if (!empty($_POST)) {
             <input id='login' name='login' type='text' value="<?php echo $login ?>" placeholder = 'Login'></input><br>
             <input id='haslo' name='haslo' type='password' value='<?php echo $haslo ?>' placeholder = 'Hasło'></input><br>
             <input id='phaslo' name='phaslo' type='password' value='<?php echo $phaslo ?>' placeholder = 'Powtórz hasło'></input><br>
-            Wybór roli<select id="wyborroli" name="wyborroli">
+            Wybór roli<select id="rola" name="rola">
                 <option value=="1">Użytkownik</option>
                 <option value="2">Redaktor</option>
                 <option value="3">Admin</option>

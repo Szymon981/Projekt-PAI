@@ -1,5 +1,6 @@
 <?php
-require_once "layout.php"
+require_once __DIR__ . '.\layout.php';
+      
 ?>
 <style>
 .footer {
@@ -26,7 +27,7 @@ require_once "layout.php"
 			<a href="/projekt/Kontakt.php">Kontakt</a>
 			<a href="/projekt/rejestracja.php">Rejestracja</a>
 		<?php 
-			require_once "Aplikacja.php";
+			require_once __DIR__ . "\..\backend\Aplikacja.php";
 			if(Aplikacja::isLogged()){
 				$wyloguj = "Wyloguj(".Aplikacja::getUsername().")";
 				echo"<a href='/projekt/wyloguj.php'>$wyloguj</a>";
