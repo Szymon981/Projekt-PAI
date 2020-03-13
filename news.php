@@ -125,16 +125,7 @@ if (isset($_GET['id'])) {
         newComment.attr('id', htmlId);
         newComment.appendTo("#comments-section");
         $('#' + htmlId +' .author').text(autor);  
-        $('#' + htmlId +' .comment-body').text(tresc);  
-        $('#' + htmlId +' #score').attr("id", "score" + id);  
-        $('#' + htmlId +' #score' + id).text(score); 
-        $('#' + htmlId +' .scoreButtons span').attr("data-comment-id", id); 
-        newComment.show();
-        
-        assignClickListeners('#' + htmlId + " ");    
-           
-    }
-    var performAjaxRequest = function (akcja, id, button) {
+        $('#' + htmlId +' .comment-body').text(tresc); var performAjaxRequest = function (akcja, id, button) {
         $.ajax({
             method: "GET",
             url: "http://localhost/projekt/zliczpunktacje.php",
@@ -150,7 +141,16 @@ if (isset($_GET['id'])) {
             }
             console.log(res);
         });
-    };
+    }; 
+        $('#' + htmlId +' #score').attr("id", "score" + id);  
+        $('#' + htmlId +' #score' + id).text(score); 
+        $('#' + htmlId +' .scoreButtons span').attr("data-comment-id", id); 
+        newComment.show();
+        
+        assignClickListeners('#' + htmlId + " ");    
+           
+    }
+    
     
     $('#add-comment').click(function () {
         $.ajax({

@@ -176,7 +176,9 @@ $queryAsString = "insert into newsy(tytul, obrazek, autor, tresc, typ) values('"
         return $query->fetch_array(MYSQLI_ASSOC);
     }
     
-    
+    public function addFavourite($matchId, $userId){
+        $this->connection->query("insert into ulubione (id_uzytkownika, id_meczu) values($userId, $matchId)");
+    }
        
 }
 

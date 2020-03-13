@@ -52,6 +52,7 @@ class Aplikacja{
 			$_SESSION['logged'] = true;
 			$_SESSION['login'] = $login;
 			$_SESSION['rola'] = $user['rola'];
+                        $_SESSION['id'] = $user['id'];
 			header('Location: http://localhost/projekt/newsy.php');
 		}
 		return false;
@@ -73,6 +74,14 @@ class Aplikacja{
 			session_start();
 		}
 	}
+        
+        public static function getLoggedUserId(){
+            if(Aplikacja::isLogged()){
+                return $_SESSION['id'];
+            }
+            throw new Exception("Nie jesteś zalogowany");
+            
+        }
         
 }
 

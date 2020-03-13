@@ -33,26 +33,26 @@ require_once "src\backend\baza.php";
     }
 }
 PanelMeczy::wyswietl();
+
 ?>
 
 <script>
 var assignClickListeners = function() {
 
-        $('.starContainer').click(function () {
+        $('.star').click(function () {
             var button = $(this);
             var id = button.data('matchId');
             performAjaxRequest(id, button);
+            
+            
+
         });
 
        
     }
     
     var performAjaxRequest = function (id, button) {
-        $.ajax({
-            method: "GET",
-            url: "http://localhost/projekt/ulubioneMecze.php",
-            data: {id: id}
-        }).done(function (res) {
+        var callback = function (res) {
 //            var response = JSON.parse(res);
 //            if (response.success) {
 //                var score = response.score;
@@ -61,8 +61,15 @@ var assignClickListeners = function() {
 //                    $(item).hide();
 //                });
 //            }
-            console.log(res);
-        });
+        button.hide();
+        }; 
+        
+        $.ajax({
+            method: "POST",
+            url: "http://localhost/projekt/ulubioneMecze.php",
+            data: {id: id}
+        }).done(callback);
     };
 assignClickListeners();
+
 </script>
