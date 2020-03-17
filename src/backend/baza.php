@@ -29,6 +29,7 @@ class NormalDatabase implements DatabaseFacade {
         return $result;
     }
     
+    
     public function getCommentByNewsId($id){
         $query = $this->connection->query("select id, user_name, content, plusy, minusy from komentarze where news_id = $id");
         $result = [];
@@ -70,7 +71,15 @@ class NormalDatabase implements DatabaseFacade {
         
         return $news;
     }
-    
+    public function getUser(){
+        $query = $this->connection->query("select id, imie, rola from uzytkownicy");
+        $result = [];
+        while ($row = $query->fetch_array(MYSQLI_ASSOC)){
+            $result[] = $row;
+            
+        }
+        return $result;
+    }
 
         public function addNews($dane) {
         if (empty($dane['tytul']) || empty($dane['obrazek']) || empty($dane['autor']) || empty($dane['tresc'])) {
@@ -178,6 +187,10 @@ $queryAsString = "insert into newsy(tytul, obrazek, autor, tresc, typ) values('"
     
     public function addFavourite($matchId, $userId){
         $this->connection->query("insert into ulubione (id_uzytkownika, id_meczu) values($userId, $matchId)");
+    }
+    
+    public function deleteUser($userId){
+        $this->connection->query("delete from uzytkownicy where id = $userId");
     }
        
 }

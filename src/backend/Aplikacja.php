@@ -53,7 +53,7 @@ class Aplikacja{
 			$_SESSION['login'] = $login;
 			$_SESSION['rola'] = $user['rola'];
                         $_SESSION['id'] = $user['id'];
-			header('Location: http://localhost/projekt/newsy.php');
+			//header('Location: http://localhost/projekt/newsy.php');
 		}
 		return false;
 	}
@@ -81,6 +81,15 @@ class Aplikacja{
             }
             throw new Exception("Nie jesteś zalogowany");
             
+        }
+        
+        public static function getRoleName($rolaId){
+            $role = [
+                1 => "Użytkownik",
+                2 => "Redaktor",
+                3 => "Admin"
+            ];
+            return $role[(int)$rolaId];
         }
         
 }

@@ -20,6 +20,7 @@
         <a href="/projekt/Kontakt.php">Kontakt</a>
         <a href="/projekt/rejestracja.php">Rejestracja</a>
         <a href="/projekt/Parser2.php">Panel admina</a>
+        <a href="/projekt/uzytkownicy.php">Uzytkownicy</a>
         <?php
         require_once __DIR__ . "\..\backend\Aplikacja.php";
         if (Aplikacja::isLogged()) {
@@ -197,6 +198,18 @@ if (!empty($flahMessage)) {
         float: right;
         cursor: pointer;
     }
+    
+    .user-container{
+        width: 1000px;
+        margin-left: 20px;
+        
+    }
+    
+    .imie, .rola, .trashbinContainer{
+        float: left;
+        width: 200px;
+    }
+    
     
     
 </style>
