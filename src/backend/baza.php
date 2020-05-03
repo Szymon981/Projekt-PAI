@@ -11,13 +11,19 @@ class NormalDatabase implements DatabaseFacade {
         $this->connection = mysqli_connect("localhost", "root", "", "test");
     }
 
-    public function getNews($type = 1) {
-        $query = $this->connection->query("select id, tytul, obrazek, autor, tresc, typ from newsy where typ = $type");
+    public function getNews($type = 1, $page = 1, $limit = 10) {
+        $offset = ($page - 1) * $limit;
+        $query = $this->connection->query("select id, tytul, obrazek, autor, tresc, typ from newsy where typ = $type limit $limit offset $offset");
         $result = [];
         while ($row = $query->fetch_array(MYSQLI_ASSOC)) {
             $result[] = $row;
         }
         return $result;
+    }
+    
+    public function getAllNewsNumber(){
+        $query = $this->connection->query("select count(*) as counter from newsy where typ = 1");
+        return $query->fetch_array(MYSQLI_ASSOC)["counter"];
     }
     
     public function getMatch(){
@@ -31,7 +37,7 @@ class NormalDatabase implements DatabaseFacade {
     
     
     public function getCommentByNewsId($id){
-        $query = $this->connection->query("select id, user_name, content, plusy, minusy from komentarze where news_id = $id");
+        $query = $this->connection->query("select id, user_name, content, plusy, minusy, wynik, created from komentarze where news_id = $id");
         $result = [];
         while ($row = $query->fetch_array(MYSQLI_ASSOC)){
             $result[] = $row;
@@ -57,7 +63,7 @@ class NormalDatabase implements DatabaseFacade {
             
         }
         
-        $query = $this->connection->query("update komentarze set wynik = $result, where id = $id");
+        $query = $this->connection->query("update komentarze set wynik = $result where id = $id");
         return $result;
     }
 
@@ -130,6 +136,27 @@ $queryAsString = "insert into newsy(tytul, obrazek, autor, tresc, typ) values('"
         return $query;
     }
     
+    public function updateUser($userId, $login, $role,$oldPassword, $newPassword, $newPassword2){
+        
+        if(!$this->validatePasswordStrenght($newPassword)){
+            throw new Exception('Zbyt słabe hasło. Minimum 5 znaków, 1 cyfra, 1 duża litera.');
+        }
+        
+        if ($newPassword !== $newPassword2) {
+            throw new Exception('Hasla nie sa takie same');
+        }
+        $epassword = Aplikacja::encodePassword($newPassword);
+        
+        
+        if(!Aplikacja::verifyPassword($userId, $oldPassword)){
+        
+            throw new Exception("Podane haslo nie jest prawidlowe");
+        
+        }
+        var_dump($this->connection->query("update uzytkownicy set login = '$login', rola = $role, haslo = '$epassword' where id = $userId"));
+    }
+   
+    
     private function validatePasswordStrenght($password){
         if(strlen($password) < 4){
             return false;
@@ -147,6 +174,14 @@ $queryAsString = "insert into newsy(tytul, obrazek, autor, tresc, typ) values('"
     public function getUserByLoginandPassword($login, $password) {
 
         $query = $this->connection->query("SELECT * FROM `uzytkownicy` WHERE login='$login' and haslo='$password'");
+        while ($row = $query->fetch_array(MYSQLI_ASSOC)) {
+            return $row;
+        }
+    }
+    
+    public function getUserByIdandPassword($id, $password) {
+
+        $query = $this->connection->query("SELECT * FROM `uzytkownicy` WHERE id=$id and haslo='$password'");
         while ($row = $query->fetch_array(MYSQLI_ASSOC)) {
             return $row;
         }
@@ -181,7 +216,7 @@ $queryAsString = "insert into newsy(tytul, obrazek, autor, tresc, typ) values('"
     }
     
     public function getCommentById($id){
-        $query = $this->connection->query("select id, user_name, content, plusy, minusy, wynik from komentarze where id = $id");
+        $query = $this->connection->query("select id, user_name, content, plusy, minusy, wynik, created from komentarze where id = $id");
         return $query->fetch_array(MYSQLI_ASSOC);
     }
     
@@ -192,7 +227,53 @@ $queryAsString = "insert into newsy(tytul, obrazek, autor, tresc, typ) values('"
     public function deleteUser($userId){
         $this->connection->query("delete from uzytkownicy where id = $userId");
     }
+    
+    public function createQuiz($name, $structure, $description, $level, $questionNumber){
+            
+        $this->connection->query("insert into quiz (name, structure, description, level, questions_number) values('$name', '$structure','$description', $level, $questionNumber)");
+    }
+    
+    public function getQuiz(){
+        $this->conncection->query("select * from 'quiz'");
+    }
+    
+    public function getQuizes(){
+        $query = $this->connection->query("select id, name, level, questions_number from quiz");
+        
+        $result = [];
+        while ($row = $query->fetch_array(MYSQLI_ASSOC)){
+            $result[] = $row;
+            
+        }
+        return $result;
+    
+    }
+    
+    public function getQuizById($id){
+        $query = $this->connection->query("select name, structure from quiz where id = $id");
        
-}
+        while ($row = $query->fetch_array(MYSQLI_ASSOC)){
+            return $row;
+        }
+        throw new Exception("Nie ma takiego quizu");
+    }
+    
+    public function getQuizByName($name){
+        $query = $this->connection->query("select id, structure from quiz where name = '$name'");
+        
+         while ($row = $query->fetch_array(MYSQLI_ASSOC)){
+            return $row;
+        }
+        throw new Exception("Nie ma takiego quizu");
+    }
+    
+    public function saveQuizScore($quizId, $userId, $score){
+        if($userId == null){
+            $userId = "NULL";
+        }
+        $query = $this->connection->query("insert into wynik_quizu (quiz_id, user_id, score) values ($quizId, $userId, $score)");
+        
+    }
 
+}
 ?>

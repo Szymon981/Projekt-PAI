@@ -37,7 +37,7 @@ if (!empty($_POST)) {
             <input id='haslo' name='haslo' type='password' value='<?php echo $haslo ?>' placeholder = 'Hasło'></input><br>
             <input id='phaslo' name='phaslo' type='password' value='<?php echo $phaslo ?>' placeholder = 'Powtórz hasło'></input><br>
             Wybór roli<select id="rola" name="rola">
-                <option value=="1">Użytkownik</option>
+                <option value="1">Użytkownik</option>
                 <option value="2">Redaktor</option>
                 <option value="3">Admin</option>
 

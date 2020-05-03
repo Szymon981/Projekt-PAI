@@ -54,6 +54,9 @@ if (isset($_GET['id'])) {
 <div id="comments-section">
 
     <label id = 'comment-mark' style = "font-weight: bold">Komentarze:</label>
+    <label id = 'sort'>Sortuj po:</label>
+    <button id = 'date-sort'>Dacie</button>
+    <button id = 'score-sort'>Wyniku komentarza</button>
     <?php
     foreach ($comments as $value) {
     ?>
@@ -119,29 +122,48 @@ if (isset($_GET['id'])) {
 
 
 <script>
+    var commentsStructure = [
+        <?php 
+        foreach ($comments as $comment):        
+        ?>
+            {
+                id: <?php echo $comment['id'];?>,
+                autor: "<?php echo $comment['user_name'];?>",
+                body: "<?php echo $comment['content'];?>",
+                score: <?php echo $comment['wynik'];?>,
+                date: "<?php echo $comment['created'];?>"
+            },
+        <?php
+        endforeach;
+        ?>
+    ];
+    
+    var performAjaxRequest = function (akcja, id, button) {
+            $.ajax({
+                method: "GET",
+                url: "http://localhost/projekt/zliczpunktacje.php",
+                data: {akcja: akcja, id: id}
+            }).done(function (res) {
+                var response = JSON.parse(res);
+                if (response.success) {
+                    var score = response.score;
+                    $('#score' + id).text(score);
+                    button.parent().find('span.minus, span.plus').each(function(index, item){
+                        $(item).hide();
+                    });
+                }
+                console.log(res);
+            });
+        };
+    
     var renderNewComment = function(id, autor, tresc, score){
         var htmlId = 'comment-' + id;
         var newComment = $('#comment-template').clone();
         newComment.attr('id', htmlId);
         newComment.appendTo("#comments-section");
         $('#' + htmlId +' .author').text(autor);  
-        $('#' + htmlId +' .comment-body').text(tresc); var performAjaxRequest = function (akcja, id, button) {
-        $.ajax({
-            method: "GET",
-            url: "http://localhost/projekt/zliczpunktacje.php",
-            data: {akcja: akcja, id: id}
-        }).done(function (res) {
-            var response = JSON.parse(res);
-            if (response.success) {
-                var score = response.score;
-                $('#score' + id).text(score);
-                button.parent().find('span.minus, span.plus').each(function(index, item){
-                    $(item).hide();
-                });
-            }
-            console.log(res);
-        });
-    }; 
+        $('#' + htmlId +' .comment-body').text(tresc);
+         
         $('#' + htmlId +' #score').attr("id", "score" + id);  
         $('#' + htmlId +' #score' + id).text(score); 
         $('#' + htmlId +' .scoreButtons span').attr("data-comment-id", id); 
@@ -161,9 +183,17 @@ if (isset($_GET['id'])) {
                 tresc: $('#tresc').val(), 
                 autor: $('#autor').val()}
         }).done(function (res) {
-        var response = JSON.parse(res);
-        console.log(response);
-        renderNewComment(response.id, response.autor, response.tresc, response.score);
+            var response = JSON.parse(res);
+            console.log(response);
+            renderNewComment(response.id, response.autor, response.tresc, response.score);
+            var structure = {
+                id: response.id,
+                autor: response.autor,
+                body: response.tresc,
+                score: response.score,
+                date: response.data
+            }
+            commentsStructure.push(structure);
             // jezeli success to
             //1. wyczysc formularz
             //2. podepnij diva z nowym komentarzem na strone
@@ -185,4 +215,45 @@ if (isset($_GET['id'])) {
         });
     }
     assignClickListeners("");
+    
+    function createComparingFunction(field){
+        return function (a,b){
+            if(a[field] < b[field])
+                return 1;
+            if(a[field] > b[field])
+                return -1;
+            else
+                return 0;
+            }
+    }
+    
+    var sortCommentByScore = function(){
+        
+        
+        var sortedStructure = commentsStructure.sort(createComparingFunction('score'));
+        return sortedStructure;
+    }
+    $("#score-sort").click(function(){
+        $("#comments-section .comment").remove();
+        var sorted = sortCommentByScore();
+        for(var i = 0; i < sorted.length; i++){
+            renderNewComment(sorted[i].id, sorted[i].autor, sorted[i].body, sorted[i].score)
+            console.log(sorted);
+        }
+    });
+    
+    var sortCommentByDate = function(){
+        var sortedStructure = commentsStructure.sort(createComparingFunction('date'));
+        return sortedStructure;
+        
+    }
+    
+    $('#date-sort').click(function(){
+        $("#comments-section .comment").remove();
+        
+        var sorted = sortCommentByDate();
+        for(var i = 0; i < sorted.length; i++){
+            renderNewComment(sorted[i].id, sorted[i].autor, sorted[i].body, sorted[i].score);
+        }
+    });
 </script>

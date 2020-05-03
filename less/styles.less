@@ -1,0 +1,32 @@
+
+@background-color: lightblue;
+@second-color: blue;
+@main-font-family: "Helvetica", "Verdana";
+@second-font-family: "Century Gothic", sans-serif;
+
+
+html body{
+   background: @background-color; 
+   font-family: @main-font-family;
+
+   #main-menu-items{
+        a{   
+            font-family: @second-font-family;
+        }
+   }
+   
+     
+   .news{
+       img{
+           .corners();
+       }
+   }
+}
+
+.corners{
+    border-radius: 20px;
+    
+}
+
+
+

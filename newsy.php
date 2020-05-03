@@ -1,3 +1,20 @@
+<script>
+
+
+
+function wyswietlStrone(strona){
+        
+        $.ajax({
+            method: "GET",
+            url: "http://localhost/projekt/newsyajax.php?strona="+strona,
+            })
+        .success(function(res){
+            $("#news-container .news").remove();
+            $("#news-container").html(res);
+            });
+       
+        };
+</script>
 <?php
         $pageTitle = 'Strona główna.';
 	require_once 'src\views\layout.php';

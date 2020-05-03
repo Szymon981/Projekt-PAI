@@ -5,8 +5,8 @@ require_once 'src\backend\Aplikacja.php';
 
 
 if(!empty($_POST)){
-	if(!(Aplikacja::zaloguj($_POST['login'], Aplikacja::encodePassword($_POST['haslo'])))){
-		echo "<div class='error'>Nieprawidlowe haslo lub login</div>";
+	if(!(Aplikacja::zaloguj($_POST['login'], $_POST['haslo']))){
+		echo "<div class='alert alert-danger'>Nieprawidlowe haslo lub login</div>";
 	}
 }
 

@@ -25,7 +25,7 @@ $czas = '';
 		$druzyna2 = $_POST['druzyna2'];
 		$data = $_POST['data'];
 		$czas = $_POST['czas'];
-		echo "<div class='error'>Wystapil blad podczas dodawania meczu</div>";
+		echo "<div class='alert alert-warning'>Wystapil blad podczas dodawania meczu</div>";
 	}
 }
 

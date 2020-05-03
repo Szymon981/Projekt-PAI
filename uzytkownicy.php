@@ -44,12 +44,10 @@ var assignClickListeners = function() {
             var button = $(this);
             var id = button.data('userId');
             performAjaxRequest(id, button);
-            
-            
 
         });
 
-       
+        
     }
     
     var performAjaxRequest = function (id, button) {
@@ -63,6 +61,8 @@ var assignClickListeners = function() {
             url: "http://localhost/projekt/usunieciuzytkownicy.php",
             data: {id: id}
         }).done(callback);
+        
+        
     };
 assignClickListeners();
 

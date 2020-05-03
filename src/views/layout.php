@@ -1,18 +1,24 @@
+
 <head>
     <?php if (isset($pageTitle)){ ?>
         <title><?php echo $pageTitle; ?></title>
     <?php } ?>
-          <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <link rel="stylesheet" href="/resources/demos/style.css">
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="https://unpkg.com/@popperjs/core@2"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+          <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <link rel="stylesheet/less" type="text/css" href="less/styles.less" />
+  <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.9.0/less.min.js" ></script>
+  <script src="../Quiz/public_html/quiz.js"></script>
+  <link rel="stylesheet" href="../Quiz/public_html/quiz.css">
 </head>
 
 <div id="main_menu">
     <img class='logo' src = "https://cdn.shopifycloud.com/hatchful-web/assets/67cbe9b74baf7f893488c5fc426d31eb.png">
     <div id="main-menu-items">
-        <a href="/projekt/dodajnewsa.php">Dodaj treść</a>
-        <a href="/projekt/Dodajmecz.php">Dodaj mecz</a>
         <a href="/projekt/newsy.php">Strona główna</a>
         <a href="/projekt/transfery.php">Transfery</a>
         <a href="/projekt/felietony.php">Felietony</a>
@@ -20,7 +26,21 @@
         <a href="/projekt/Kontakt.php">Kontakt</a>
         <a href="/projekt/rejestracja.php">Rejestracja</a>
         <a href="/projekt/Parser2.php">Panel admina</a>
-        <a href="/projekt/uzytkownicy.php">Uzytkownicy</a>
+        <a href="/projekt/quizy.php">Quiz</a>
+        
+        <div class="dropdown">
+    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Rzeczy admina
+    </a>
+
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+      <a class="dropdown-item" href="/projekt/Dodajmecz.php">Dodaj mecz</a>
+      <a class="dropdown-item" href="/projekt/uzytkownicy.php">Użytkownicy</a>
+      <a class="dropdown-item" href="/projekt/stworzquiz.php">Stwórz quiz</a>
+      <a class="dropdown-item" href="/projekt/dodajnewsa.php">Dodaj treść</a>
+    </div>
+    </div>
+
         <?php
         require_once __DIR__ . "\..\backend\Aplikacja.php";
         if (Aplikacja::isLogged()) {
@@ -41,13 +61,22 @@ if (!empty($flahMessage)) {
 }
 ?>
 <style>
-    
+    @media(max-width: 800px){
+        
+        body .news{
+            width: 60%;
+            font-size: 25px;
+            
+        }
+        body h1{
+            font-size: 30px;
+        }
+    }
     h1 {            
         color: #2699FB;         
     }
     body{       
         margin:0px;
-        font-family: "Century Gothic", "Helvetica";				
         
 
     }
@@ -63,6 +92,11 @@ if (!empty($flahMessage)) {
     #main_menu {
         background: #2699FB;
     }
+   
+    .page-link{
+        float: left;
+    }
+    
     #main_menu a{
         color:white;
         text-decoration: none;
@@ -96,14 +130,14 @@ if (!empty($flahMessage)) {
         border:none;
     }
 
-    .news{
+/*    .card{
         float: left;
         width: 40%;
         margin: 10px;
         padding: 20px;
         height: 250px;
 
-    }	
+    }	*/
 
     .news img{
         width: 50%;
@@ -210,6 +244,21 @@ if (!empty($flahMessage)) {
         width: 200px;
     }
     
+    .current-page-link{
+        font-size: 20px;
+    }
+    
+    .quiz-name{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    
+    #quiz-h1,  #quiz-select-button, #save-score{
+      display: inline-block;
+      margin: 10px;
+    }
     
     
 </style>

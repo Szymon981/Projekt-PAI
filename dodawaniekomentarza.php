@@ -11,6 +11,7 @@ $newComment = $baza->getCommentById($baza->getMaxCommentId());
      'score' => $newComment['wynik'],
      'plusy' => $newComment['plusy'],
      'minusy' => $newComment['minusy'],
+     'data' => $newComment['created']
  ];
  
  echo json_encode($result);
