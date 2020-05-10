@@ -3,15 +3,17 @@
     <?php if (isset($pageTitle)){ ?>
         <title><?php echo $pageTitle; ?></title>
     <?php } ?>
+<link type='text/css' href='https://fonts.googleapis.com/css?family=Source+Sans+Pro|EB+Garamond|Raleway|Nunito|Roboto|Droid|Arvo|Aleo|Jura' rel='stylesheet'>
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  <script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script> 
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
           <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <link rel="stylesheet" href="/resources/demos/style.css">
-  <link rel="stylesheet/less" type="text/css" href="less/styles.less" />
-  <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.9.0/less.min.js" ></script>
+  <link rel="stylesheet" type="text/css" href="css/styles.css" />
+  <!--<script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.9.0/less.min.js" ></script>-->
   <script src="../Quiz/public_html/quiz.js"></script>
   <link rel="stylesheet" href="../Quiz/public_html/quiz.css">
 </head>
@@ -28,7 +30,7 @@
         <a href="/projekt/Parser2.php">Panel admina</a>
         <a href="/projekt/quizy.php">Quiz</a>
         
-        <div class="dropdown">
+        <div class="dropdown admin-links">
     <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       Rzeczy admina
     </a>
@@ -64,19 +66,18 @@ if (!empty($flahMessage)) {
     @media(max-width: 800px){
         
         body .news{
-            width: 60%;
-            font-size: 25px;
+            
             
         }
         body h1{
-            font-size: 30px;
+            
         }
     }
     h1 {            
         color: #2699FB;         
     }
     body{       
-        margin:0px;
+        
         
 
     }

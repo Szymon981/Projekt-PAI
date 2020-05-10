@@ -32,7 +32,7 @@ class PanelNewsow {
             endfor;
         }
         echo "<div style = 'clear:both'></div>";
-        echo "<div id = 'news-container'>";
+        echo "<div id = 'news-container' class = 'row'>";
 
         foreach ($tab as $elementyposta) {
             if (count($elementyposta) < 4) {

@@ -1,0 +1,53 @@
+html body {
+  background: lightblue;
+  font-family: "Helvetica", "Verdana", "Roboto";
+  margin: 0px;
+}
+html body #main_menu {
+  background: #2699FB;
+  padding-bottom: 10px;
+}
+html body #main_menu .admin-links {
+  float: right;
+}
+html body #main_menu .admin-links #dropdownMenuLink {
+  margin-top: 0px;
+}
+html body #main_menu .admin-links .dropdown-item {
+  color: #2699FB;
+}
+html body #main_menu #main-menu-items {
+  width: auto;
+  float: right;
+  padding-top: 10px;
+}
+html body #main_menu #main-menu-items a {
+  font-family: "Century Gothic", sans-serif;
+}
+html body #main-container {
+  width: 50%;
+  margin: 20px auto;
+}
+html body #main-container .card {
+  border: 0px;
+}
+html body .news {
+  width: 60%;
+  font-size: 25px;
+}
+html body .news img {
+  border-radius: 20px;
+}
+html body h1 {
+  font-size: 30px;
+}
+.corners {
+  border-radius: 20px;
+}
+#sport-quiz-container {
+  padding-left: 15px;
+}
+#sport-quiz-container #description {
+  vertical-align: middle;
+}
+/*# sourceMappingURL=styles.css.map */

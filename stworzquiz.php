@@ -45,15 +45,26 @@ require_once 'C:\\xampp\htdocs\projekt\src\views\footer.php';
     
             
 </script>
-<div id = "sport-quiz-container">
-    <input id = "nazwa-quizu" placeholder="Nazwa quizu"><br>
-    <textarea id = "description" placeholder = "Opis" rows = "10" cols = "50"></textarea><br>
-    Poziom trudności: <select id = "level">
-        <option value = "1">Łatwy</option>
-        <option value = "2">Średni</option>
-        <option value = "3">Trudny</option>
-    </select>
-</div>
-    <button id = "open-popup">Otwórz popupa</button>
-    <button id = "submit">Zapisz Quiz</button>
+<form>
+    <div id = "sport-quiz-container">
+        <div class = "form-group">
+            <label for = "nazwa-quizu">Nazwa quizu</label>
+            <input id = "nazwa-quizu">
+        </div>
+        <div class = "form-group">
+            <label for = "description">Opis</label>
+            <textarea id = "description" rows = "10" cols = "50"></textarea>
+        </div>
+        <div class = "form-group">
+            <label for = "level">Poziom trudności:</label>
+            <select id = "level">
+                <option value = "1">Łatwy</option>
+                <option value = "2">Średni</option>
+                <option value = "3">Trudny</option>
+            </select>
+        </div>
+    </div>
+        <button id = "open-popup" class = "btn btn-primary">Otwórz popupa</button>
+        <button id = "submit" class = "btn btn-success">Zapisz Quiz</button>
+</form>
    

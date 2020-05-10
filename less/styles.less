@@ -1,31 +1,83 @@
 
 @background-color: lightblue;
 @second-color: blue;
-@main-font-family: "Helvetica", "Verdana";
+@main-font-family: "Helvetica", "Verdana", "Roboto";
 @second-font-family: "Century Gothic", sans-serif;
+@background-color2: #2699FB;
 
 
 html body{
    background: @background-color; 
    font-family: @main-font-family;
+   margin: 0px;
+   
 
-   #main-menu-items{
-        a{   
-            font-family: @second-font-family;
+   #main_menu {
+        background: @background-color2;
+        padding-bottom: 10px;
+        
+        
+        
+        .admin-links{
+            float: right;
+            
+            #dropdownMenuLink{
+                margin-top: 0px;
+            }
+            
+            .dropdown-item{
+                color: @background-color2;
+            }
+        }
+        
+   
+        #main-menu-items{
+            width:auto;
+            float: right;
+            padding-top:10px; 
+
+            a{   
+                 font-family: @second-font-family;
+             }
         }
    }
+   #main-container { 
+       .card{
+           border: 0px;
+       }
+        width:50%;
+        margin: 20px auto; 
+    }
+   
    
      
    .news{
+       
+       width: 60%;
+       font-size: 25px;
+       
+       
        img{
            .corners();
        }
+   }
+   
+   h1{
+       font-size: 30px;
    }
 }
 
 .corners{
     border-radius: 20px;
     
+}
+
+#sport-quiz-container{
+    #description{
+        vertical-align: middle;
+    }
+    
+    padding-left: 15px;
 }
 
 
