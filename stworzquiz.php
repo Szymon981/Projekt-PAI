@@ -18,7 +18,7 @@ require_once 'C:\\xampp\htdocs\projekt\src\views\footer.php';
         }).success(function(res){
             var response = JSON.parse(res);
             if(response.success == false){
-            $("#sport-quiz-container").prepend("<div class = 'error'><p>"+response.msg+"</p></div>");
+            $("#sport-quiz-container").prepend("<div class = 'alert alert-danger'><p>"+response.msg+"</p></div>");
         }
         else{
             location.href = response.url;

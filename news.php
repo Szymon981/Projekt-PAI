@@ -55,8 +55,8 @@ if (isset($_GET['id'])) {
 
     <label id = 'comment-mark' style = "font-weight: bold">Komentarze:</label>
     <label id = 'sort'>Sortuj po:</label>
-    <button id = 'date-sort'>Dacie</button>
-    <button id = 'score-sort'>Wyniku komentarza</button>
+    <button id = 'date-sort' class = "btn btn-light">Dacie</button>
+    <button id = 'score-sort' class = "btn btn-dark">Wyniku komentarza</button>
     <?php
     foreach ($comments as $value) {
     ?>
@@ -101,19 +101,32 @@ if (isset($_GET['id'])) {
             
         <?php } ?>
         <br>
-        <div style="width:400px;">
+        <div style="width:700px;">
             
-            <div style = "width: 15%;float:left">
+            <div>
                 <label>Treść:</label>
             </div>
-            <div style  = "width:85%; float:right" >
-                <textarea rows="10" cols="40" name="tresc" id="tresc"></textarea>
+            <div>
+                <div class = "row">
+                    <div id = "regulamin" class = "col-lg-6" style="background: red">
+                        <h1>Zasady dodawania komentarzy:</h1>
+                        <p>1.formularz pozwala wysyłac dane do serwera. Mogą byc wyslane metoda get lub post. get wysyla wszystko w adresie url i mozemy to podejrzec, a post wysyla w srodku requesta, mozemy to podejrzec narzedziami develeperskim, ale nie jest to az tak widoczne.</p>
+                        <p>2.</p>
+                        <p>3.</p>
+                        <p>4.formularz pozwala wysyłac dane do serwera. Mogą byc wyslane metoda get lub post. get wysyla wszystko w adresie url i mozemy to podejrzec, a post wysyla w srodku requesta, mozemy to podejrzec narzedziami develeperskim, ale nie jest to az tak widoczne.</p>
+                        <p>6.</p>
+                        <p>7.formularz pozwala wysyłac dane do serwera. Mogą byc wyslane metoda get lub post. get wysyla wszystko w adresie url i mozemy to podejrzec, a post wysyla w srodku requesta, mozemy to podejrzec narzedziami develeperskim, ale nie jest to az tak widoczne.</p>
+                    </div>
+                    <div id = "comment-field" class = "col-lg-6">
+                         <textarea rows="10" cols="40" name="tresc" id="tresc"></textarea>
+                    </div>
+                </div>
             </div>
         </div>
         <br>
         <div style="clear:both"></div>
         <input name="idnewsa" type="hidden" value="<?php echo $_GET['id'] ?>">
-        <button id="add-comment"> Dodaj komentarz</button>
+        <button id="add-comment" class = "btn btn-primary"> Dodaj komentarz</button>
 
 
 
@@ -180,7 +193,7 @@ if (isset($_GET['id'])) {
             url: "http://localhost/projekt/dodawaniekomentarza.php",
             data: {
                 idnewsa: <?php echo $_GET['id']?>,
-                tresc: $('#tresc').val(), 
+                tresc: window.editor.value(), 
                 autor: $('#autor').val()}
         }).done(function (res) {
             var response = JSON.parse(res);
@@ -201,7 +214,7 @@ if (isset($_GET['id'])) {
         })
     });
     var assignClickListeners = function(parentSelector) {
-
+        
         $(parentSelector + '.plus').click(function () {
             var button = $(this);
             var id = button.data('commentId')
@@ -214,8 +227,12 @@ if (isset($_GET['id'])) {
             performAjaxRequest("-1", id, button);
         });
     }
+    $(document).ready(function(){
     assignClickListeners("");
-    
+        window.editor = new SimpleMDE({element: document.getElementById("tresc") });
+        
+        document.getElementsByClassName("CodeMirror")[0].style.height = (document.getElementById("regulamin").clientHeight-45)+"px"
+    });
     function createComparingFunction(field){
         return function (a,b){
             if(a[field] < b[field])

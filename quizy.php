@@ -19,10 +19,10 @@ $wygenerowanaNazwa = '';
 foreach($db->getQuizes() as $quizes):?>
     
 <div class = "quiz-name">
-    <h1 id = "quiz-h1"><?php echo $quizes['name']?></h1>
-    <p id = "level"> | Poziom trudności: <?php echo $quizes['level'] ?>  </p>
-    <p id = "question-number"> | Liczba pytań: <?php echo $quizes['questions_number'] ?> | </p>
-    <button id = "quiz-select-button" onclick = 'redirect(<?php echo $quizes['id']?>)'>Wybierz Quiz</button>
+    <h1 id = "quiz-h1" class = "col-6 col-sm-3"><?php echo $quizes['name']?></h1>
+    <p id = "level" class = "col-6 col-sm-3"> | Poziom trudności: <?php echo $quizes['level'] ?>  </p>
+    <p id = "question-number" class = "col-6 col-sm-3"> | Liczba pytań: <?php echo $quizes['questions_number'] ?> | </p>
+    <button id = "quiz-select-button" class ="btn btn-light " onclick = 'redirect(<?php echo $quizes['id']?>)'>Wybierz Quiz</button>
    
     
 </div>

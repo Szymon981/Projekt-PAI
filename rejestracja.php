@@ -22,7 +22,7 @@ if (!empty($_POST)) {
         $login = $_POST['login'];
         $haslo = $_POST['haslo'];
         $phaslo = $_POST['phaslo'];
-        echo "<div class='error'>" . $e->getMessage() . "</div>";
+        echo "<div class='alert alert-danger' >" . $e->getMessage() . "</div>";
     }
 }
 ?>
@@ -43,7 +43,7 @@ if (!empty($_POST)) {
 
             </select>
             <br>
-            <input type='submit' value='Dodaj'></input>
+            <input type='submit' value='Dodaj' class = "btn btn-primary"></input>
         </div>
     </form>
 </div>

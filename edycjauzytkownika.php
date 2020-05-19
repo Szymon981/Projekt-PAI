@@ -19,7 +19,7 @@ echo "<div class='success'>Udało się zmienić dane logowania.</div>";
 $haslo = $_POST['haslo'];
 $nhaslo = $_POST['nhaslo'];
 $phaslo = $_POST['phaslo'];  
-echo "<div class='error'>" . $e->getMessage() . "</div>";
+echo "<div class='alert alert-danger'>" . $e->getMessage() . "</div>";
 }
 
 }

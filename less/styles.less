@@ -11,12 +11,19 @@ html body{
    font-family: @main-font-family;
    margin: 0px;
    
+ 
+     .logo{
+        width: 50px;
+        float: left;
+    }
 
+   
    #main_menu {
         background: @background-color2;
         padding-bottom: 10px;
+        text-align: right;
         
-        
+      
         
         .admin-links{
             float: right;
@@ -30,16 +37,22 @@ html body{
             }
         }
         
+        
+        
    
-        #main-menu-items{
-            width:auto;
+/*        #main-menu-items{*/
+/*            width:auto;
             float: right;
-            padding-top:10px; 
+            padding-top:10px; */
 
             a{   
                  font-family: @second-font-family;
+                 color:white;
+                 text-decoration: none;
+                 margin: 10px 20px;
+                 font-size:18px;
              }
-        }
+        /*}*/
    }
    #main-container { 
        .card{
@@ -48,6 +61,13 @@ html body{
         width:50%;
         margin: 20px auto; 
     }
+    
+    #main-menu-items {     
+        width:auto;
+        float: right;
+        padding-top:10px;
+    }
+    
    
    
      
@@ -81,4 +101,6 @@ html body{
 }
 
 
+
+ 
 

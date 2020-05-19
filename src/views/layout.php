@@ -16,11 +16,13 @@
   <!--<script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.9.0/less.min.js" ></script>-->
   <script src="../Quiz/public_html/quiz.js"></script>
   <link rel="stylesheet" href="../Quiz/public_html/quiz.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+<script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
 </head>
 
 <div id="main_menu">
     <img class='logo' src = "https://cdn.shopifycloud.com/hatchful-web/assets/67cbe9b74baf7f893488c5fc426d31eb.png">
-    <div id="main-menu-items">
+<!--    <div id="main-menu-items">-->
         <a href="/projekt/newsy.php">Strona główna</a>
         <a href="/projekt/transfery.php">Transfery</a>
         <a href="/projekt/felietony.php">Felietony</a>
@@ -53,7 +55,8 @@
             echo'<a href="/projekt/logowanie.php">Zaloguj</a>';
         }
         ?>
-    </div>
+        <div style = "clear: both"></div>
+        <!--</div>-->
 </div>
 <?php 
 $flahMessage = Aplikacja::getFlashMessage();
@@ -81,33 +84,24 @@ if (!empty($flahMessage)) {
         
 
     }
-    #main-container { 
-        width:50%;
-        margin: 20px auto; 
-    }
-    #main-menu-items {     
-        width:auto;
-        float: right;
-        padding-top:10px;
-    }
-    #main_menu {
-        background: #2699FB;
-    }
+  
    
     .page-link{
         float: left;
     }
     
-    #main_menu a{
+    
+/*    #main_menu a{
         color:white;
         text-decoration: none;
         margin: 10px 20px;
         font-size:18px;
 
-    }
-    .logo{
+    }*/
+    
+/*    .logo{
         width: 50px;
-    }
+    }*/
     .success {
         background: green;
         color:white;
@@ -131,14 +125,14 @@ if (!empty($flahMessage)) {
         border:none;
     }
 
-/*    .card{
+    .card{
         float: left;
         width: 40%;
         margin: 10px;
         padding: 20px;
-        height: 250px;
+        min-height: 250px;
 
-    }	*/
+    }	
 
     .news img{
         width: 50%;

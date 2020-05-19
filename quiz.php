@@ -22,7 +22,7 @@ if(Aplikacja::isLogged()){
         <p  id = "1"><?php echo $_GET['id'] ?></p>
         <p  id = "2"><?php echo $userId ?></p> 
     </div>
- <button id = "save-score">Zapisz wynik</button>
+ <button id = "save-score" class = "btn btn-success">Zapisz wynik</button>
 </div>
 
 <script type = "text/javascript">

@@ -3,9 +3,19 @@ html body {
   font-family: "Helvetica", "Verdana", "Roboto";
   margin: 0px;
 }
+html body .logo {
+  width: 50px;
+  float: left;
+}
 html body #main_menu {
   background: #2699FB;
   padding-bottom: 10px;
+  text-align: right;
+  /*        #main-menu-items{*/
+  /*            width:auto;
+            float: right;
+            padding-top:10px; */
+  /*}*/
 }
 html body #main_menu .admin-links {
   float: right;
@@ -16,13 +26,12 @@ html body #main_menu .admin-links #dropdownMenuLink {
 html body #main_menu .admin-links .dropdown-item {
   color: #2699FB;
 }
-html body #main_menu #main-menu-items {
-  width: auto;
-  float: right;
-  padding-top: 10px;
-}
-html body #main_menu #main-menu-items a {
+html body #main_menu a {
   font-family: "Century Gothic", sans-serif;
+  color: white;
+  text-decoration: none;
+  margin: 10px 20px;
+  font-size: 18px;
 }
 html body #main-container {
   width: 50%;
@@ -30,6 +39,11 @@ html body #main-container {
 }
 html body #main-container .card {
   border: 0px;
+}
+html body #main-menu-items {
+  width: auto;
+  float: right;
+  padding-top: 10px;
 }
 html body .news {
   width: 60%;

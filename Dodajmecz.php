@@ -38,7 +38,7 @@ $czas = '';
 <input id='druzyna2' name='druzyna2' type='text' value="<?php echo $druzyna2 ?>" placeholder = 'Druzyna2'></input><br>
 <input id='data' name='data' type='text' value="<?php echo $data ?>" placeholder = 'Data'></input><br>
 <input id='czas' name='czas' type='text' value="<?php echo $czas ?>" placeholder = 'Czas'></input><br>
-<input type='submit' value='Dodaj'></input>
+<input type='submit' value='Dodaj' class = "btn btn-primary"></input>
 </div>
 </form>
 </div>

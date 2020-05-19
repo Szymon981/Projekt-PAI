@@ -25,7 +25,7 @@ $typ = 1;
 		$autor = $_POST['autor'];
 		$obrazek = $_POST['obrazek'];
 		$typ = (int)$_POST['wybortresci'];
-		echo "<div class='error'>Wystapil blad podczas dodawania newsa</div>";
+		echo "<div class= 'alert alert-danger'>Wystapil blad podczas dodawania newsa</div>";
 	}
 }
 
@@ -45,7 +45,7 @@ $typ = 1;
 
             </select>
  <br>
-<input type='submit' value='Dodaj'></input>
+<input type='submit' value='Dodaj' class = "btn btn-primary"></input>
 </div>
 </form>
 </div>

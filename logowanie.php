@@ -17,6 +17,6 @@ if(!empty($_POST)){
 	<input id = 'login' name = 'login' type = 'text' value='' placeholder = 'Login'></input>
 	<br>
 	<input id = 'haslo' name = 'haslo' type = 'password' value='' placeholder = 'Hasło'></input>
-	<input type='submit' value='Zaloguj'></input>
+	<input type='submit' value='Zaloguj' class = "btn btn-primary"></input>
 	</form>
 </div>
